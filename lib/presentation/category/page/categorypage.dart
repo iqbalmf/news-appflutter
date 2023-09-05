@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/presentation/category/item/itemcategory.dart';
+import 'package:news_app/utils/constant.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -13,12 +15,11 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           backgroundColor: Colors.amber,
           elevation: 2,
           centerTitle: false,
-          leading: const SizedBox(),
           title: const Text(
             'News App',
             style: TextStyle(
@@ -27,7 +28,23 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
       ),
       body: Container(
+        child: categories(),
+      ),
+    );
+  }
 
+  Widget categories() {
+    return Container(
+      margin: const EdgeInsets.all(16.0),
+      width: MediaQuery.of(context).size.width - 2 * 16,
+      height: MediaQuery.of(context).size.height,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return ItemCategory(categoryName: listCategory[index]);
+        },
+        itemCount: listCategory.length,
+        shrinkWrap: true,
+        physics: const ScrollPhysics(),
       ),
     );
   }
