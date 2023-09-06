@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/presentation/source/bloc/source_bloc.dart';
+import 'package:news_app/presentation/source/item/item_source.dart';
 
 import '../bloc/source_state.dart';
 
@@ -18,7 +19,9 @@ class _SourcePageState extends State<SourcePage> {
     super.initState();
     getSource(widget.category);
   }
-  getSource(String category) => context.read<SourceCubit>().getSourceByCategory(category);
+
+  getSource(String category) =>
+      context.read<SourceCubit>().getSourceByCategory(category);
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +47,24 @@ class _SourcePageState extends State<SourcePage> {
           ),
           body: Container(
             color: Colors.white,
+            child: listSourceNews(state),
           ),
         );
       },
+    );
+  }
+
+  Widget listSourceNews(SourceState sourceState) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: ListView.builder(
+          shrinkWrap: true,
+          physics: const AlwaysScrollableScrollPhysics(),
+          itemCount: sourceState.sourcesNews.length,
+          itemBuilder: (context, index) {
+            return ItemSource(
+                sourceModel: sourceState.sourcesNews[index], onTap: () {});
+          }),
     );
   }
 }

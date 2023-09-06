@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz_streaming.dart';
 import 'package:dio/dio.dart';
 import 'package:news_app/data/models/source_model.dart';
 import 'package:news_app/data/remote/news_remote_datasource.dart';
@@ -14,7 +15,10 @@ class NewsRepositoryImpl extends NewsRepository {
   Future<Either<Failure, List<SourceModel>>> getSourceNews(String category) async {
     try {
       final result = await _newsRemoteDataSource.getSourcebyCategory(category);
-      return Right(result);
+      List<SourceModel> _sourceNews = List<SourceModel>.from(
+        result.data['sources'].map((json) => SourceModel.fromJson(json))
+      );
+      return Right(_sourceNews);
     } on DioError catch (e) {
       return Left(ServerFailure(
           message: e.response?.statusMessage ?? '',

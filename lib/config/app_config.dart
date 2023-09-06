@@ -35,7 +35,7 @@ class ConstantsApp {
 }
 
 class _Config {
-  static const String baseUrl = "";
+  static const String baseUrl = "https://newsapi.org/v2/";
   static const String appName = "";
   static const bool modeDevelopment = false;
   static const String versionApp = "1.0.0";
@@ -45,7 +45,7 @@ class _Config {
     appName: 'News App Dev',
     modeDevelopment: true,
     versionApp: "1.0.0",
-    xApiKey: '',
+    xApiKey: '150909ebccbf440c82689ee3a0e7f722',
   };
 
   static Map<dynamic, dynamic> production = {

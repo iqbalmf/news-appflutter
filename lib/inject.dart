@@ -15,7 +15,7 @@ void init() {
   * Api Service, Rest
   * */
   locator.registerLazySingleton(
-      () => ApiHelper(Dio(BaseOptions(baseUrl: 'https://newsapi.org/v2/'))));
+      () => ApiHelper(Dio(BaseOptions(baseUrl: ConstantsApp.baseUrl))));
 
 
   /*
