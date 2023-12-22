@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:news_app/presentation/source/bloc/source_bloc.dart';
+import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/utils/routers.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'inject.dart' as di;
@@ -18,6 +19,11 @@ class NewsApp extends StatelessWidget {
       child: GetMaterialApp(
         title: "News App",
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(color: ColorsApp.blackColor)
+          )
+        ),
         builder: (context, child) => ResponsiveBreakpoints.builder(
           child: child!,
           breakpoints: [

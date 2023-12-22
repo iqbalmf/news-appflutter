@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/presentation/category/item/itemcategory.dart';
+import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/utils/constant.dart';
+import 'package:news_app/utils/widget_component.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({super.key});
@@ -13,19 +15,10 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsApp.whiteColor,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
-        child: AppBar(
-          backgroundColor: Colors.amber,
-          elevation: 2,
-          centerTitle: false,
-          title: const Text(
-            'News App',
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.w700, fontSize: 20),
-          ),
-        ),
+        child: CustomAppBar()
       ),
       body: Container(
         child: categories(),
