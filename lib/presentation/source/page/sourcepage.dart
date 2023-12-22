@@ -47,7 +47,9 @@ class _SourcePageState extends State<SourcePage> {
           ),
           body: Container(
             color: Colors.white,
-            child: listSourceNews(state),
+            child: state.sourceStatusState == SourceStatusState.loading
+                ? Center(child: CircularProgressIndicator())
+                : listSourceNews(state),
           ),
         );
       },

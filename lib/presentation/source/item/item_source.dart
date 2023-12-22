@@ -17,12 +17,23 @@ class _ItemSourceState extends State<ItemSource> {
     return GestureDetector(onTap: widget.onTap,
         child: Container(
           padding: const EdgeInsets.all(16),
-          color: Colors.white,
+          margin: EdgeInsets.symmetric(vertical: 8),
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(7)),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 0.1,
+                  blurRadius: 7,
+                )
+              ]),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 widget.sourceModel.name ?? '-',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                 maxLines: 1,
               ),
               SizedBox(height: 3,),

@@ -28,7 +28,7 @@ class SourceState extends Equatable {
       SourceState(
           message: message ?? this.message,
           sourceStatusState: sourceStatusState ?? this.sourceStatusState,
-          sourcesNews: sourceModel ?? sourcesNews);
+          sourcesNews: sourceModel ?? []);
 
   @override
   List<Object?> get props => [message, sourceStatusState, sourcesNews];
