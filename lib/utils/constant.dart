@@ -6,3 +6,5 @@ const List<String> listCategory = [
   'sports',
   'technology'
 ];
+
+const String get = 'GET';

@@ -35,9 +35,9 @@ class _SourcePageState extends State<SourcePage> {
         return Scaffold(
           backgroundColor: ColorsApp.whiteColor,
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(50),
-            child: CustomAppBar(label: 'Category: ${widget.category.toUpperCase()}')
-          ),
+              preferredSize: const Size.fromHeight(50),
+              child: CustomAppBar(
+                  label: 'Category: ${widget.category.toUpperCase()}')),
           body: Container(
             color: ColorsApp.whiteColor,
             child: state.sourceStatusState == SourceStatusState.loading
@@ -58,9 +58,12 @@ class _SourcePageState extends State<SourcePage> {
           itemCount: sourceState.sourcesNews.length,
           itemBuilder: (context, index) {
             return ItemSource(
-                sourceModel: sourceState.sourcesNews[index], onTap: () {
-                  Get.to(ArticlesPage());
-            });
+                sourceModel: sourceState.sourcesNews[index],
+                onTap: () {
+                  Get.to(ArticlesPage(
+                    source: sourceState.sourcesNews[index].id ?? '',
+                  ));
+                });
           }),
     );
   }

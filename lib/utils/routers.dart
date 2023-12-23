@@ -11,12 +11,17 @@ class RouterApp {
   static const String sourcePage = '/source_page';
   static const String articlesPage = '/articles_page';
 
-
   static List<GetPage> routers = [
     GetPage(name: initial, page: () => CategoryPage()),
-    GetPage(name: sourcePage, page: () => SourcePage(
-      category: Get.arguments['category'],
-    )),
-    GetPage(name: articlesPage, page: () => ArticlesPage())
+    GetPage(
+        name: sourcePage,
+        page: () => SourcePage(
+              category: Get.arguments['category'],
+            )),
+    GetPage(
+        name: articlesPage,
+        page: () => ArticlesPage(
+              source: Get.arguments['sources'],
+            ))
   ];
 }

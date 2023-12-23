@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:news_app/presentation/articles/bloc/articles_bloc.dart';
 import 'package:news_app/presentation/source/bloc/source_bloc.dart';
 import 'package:news_app/utils/colors_app.dart';
 import 'package:news_app/utils/routers.dart';
@@ -14,7 +15,8 @@ class NewsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<SourceCubit>(create: (context) => di.locator<SourceCubit>())
+        BlocProvider<SourceCubit>(create: (context) => di.locator<SourceCubit>()),
+        BlocProvider<ArticlesCubit>(create: (context) => di.locator<ArticlesCubit>())
       ],
       child: GetMaterialApp(
         title: "News App",
