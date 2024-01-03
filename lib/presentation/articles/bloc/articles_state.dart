@@ -12,9 +12,9 @@ enum ArticleStatusState {
 class ArticleState extends Equatable {
   late String? message;
   late ArticleStatusState? articleStatusState;
-  late List<ArticleModel>? articles;
+  late List<ArticleModel> articles;
 
-  ArticleState({this.message, this.articleStatusState, this.articles});
+  ArticleState({this.message, this.articleStatusState, this.articles = const <ArticleModel> []});
 
   ArticleState copyWith(
           {String? message,

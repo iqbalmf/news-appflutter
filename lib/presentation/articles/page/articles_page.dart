@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:news_app/presentation/articles/bloc/articles_bloc.dart';
 import 'package:news_app/presentation/articles/bloc/articles_state.dart';
+import 'package:news_app/presentation/articles/item/item_article.dart';
 import 'package:news_app/utils/widget_component.dart';
 
 import '../../../utils/colors_app.dart';
@@ -32,12 +33,19 @@ class _ArticlesPageState extends State<ArticlesPage> {
             backgroundColor: ColorsApp.whiteColor,
             appBar: PreferredSize(
                 preferredSize: const Size.fromHeight(50),
-                child: CustomAppBar(label: 'Articles: ')),
+                child: CustomAppBar(label: 'Articles: ${widget.source}')),
             body: Container(
                 color: ColorsApp.whiteColor,
                 child: state.articleStatusState == ArticleStatusState.loading
                     ? Center(child: CircularProgressIndicator())
-                    : listArticles(state)),
+                    : state.articles.isEmpty
+                        ? Center(
+                            child: Image.asset(
+                              "assets/icon-not-found.png",
+                              fit: BoxFit.contain,
+                            ),
+                          )
+                        : listArticles(state)),
           );
         });
   }
@@ -48,10 +56,10 @@ class _ArticlesPageState extends State<ArticlesPage> {
       child: ListView.builder(
           shrinkWrap: true,
           physics: const AlwaysScrollableScrollPhysics(),
-          itemCount: articleState.articles?.length,
+          itemCount: articleState.articles.length,
           itemBuilder: (context, index) {
-            return Center(
-                child: Text("${articleState.articles?[index].title}"));
+            return ItemArticle(
+                onTap: () {}, articleData: articleState.articles[index]);
           }),
     );
   }

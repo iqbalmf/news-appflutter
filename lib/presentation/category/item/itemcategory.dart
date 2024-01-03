@@ -16,7 +16,7 @@ class _ItemCategoryState extends State<ItemCategory> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(SourcePage(category: widget.categoryName), transition: Transition.rightToLeft);
+        Get.to(() => SourcePage(category: widget.categoryName), transition: Transition.rightToLeft);
       },
       child: Container(
         padding: const EdgeInsets.all(16.0),

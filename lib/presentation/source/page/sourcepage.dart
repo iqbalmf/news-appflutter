@@ -60,7 +60,7 @@ class _SourcePageState extends State<SourcePage> {
             return ItemSource(
                 sourceModel: sourceState.sourcesNews[index],
                 onTap: () {
-                  Get.to(ArticlesPage(
+                  Get.to(() => ArticlesPage(
                     source: sourceState.sourcesNews[index].id ?? '',
                   ));
                 });
