@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:news_app/presentation/articles/bloc/articles_bloc.dart';
 import 'package:news_app/presentation/articles/bloc/articles_state.dart';
 import 'package:news_app/presentation/articles/item/item_article.dart';
+import 'package:news_app/presentation/detail_article/page/detail_article_page.dart';
 import 'package:news_app/utils/widget_component.dart';
 
 import '../../../utils/colors_app.dart';
@@ -59,7 +60,9 @@ class _ArticlesPageState extends State<ArticlesPage> {
           itemCount: articleState.articles.length,
           itemBuilder: (context, index) {
             return ItemArticle(
-                onTap: () {}, articleData: articleState.articles[index]);
+                onTap: () {
+                  Get.to(() => DetailArticle(urlArticle: articleState.articles[index].url.toString()));
+                }, articleData: articleState.articles[index]);
           }),
     );
   }
