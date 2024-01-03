@@ -20,11 +20,9 @@ class SourceCubit extends Cubit<SourceState> {
         var result = await _getSourceUseCase.getSourceByCategory(category);
         result.fold((l) async {
           if(l is ServerFailure){
-            print('failed ${l.message}');
             emit(state.copyWith(sourceStatusState: SourceStatusState.fail));
           }
         }, (r) {
-          print('success ${r.length}');
           emit(
             state.copyWith(
               sourceStatusState: SourceStatusState.done,
